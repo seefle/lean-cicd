@@ -7,7 +7,7 @@ on:
 jobs:
   # this is the job and now we called it : Tests
   # and job has metadata like name and
-  # runs-on[which is the machine to run the job on]
+  # runs-on [which is the machine to run the job on]
   Tests:
     name: Tests
     runs-on: ubuntu-latest
@@ -29,6 +29,7 @@ jobs:
       # this is runs on root of your newly installed
       # repo in the runner by first one
       - name: Install dependencies
+        # this is stands for 'clean install'
         run: npm ci
 
       - name: Run the test
