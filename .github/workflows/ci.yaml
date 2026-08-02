@@ -5,31 +5,26 @@ on:
     branches: ["main"]
 
 jobs:
-  # this is the job and now we called it : Tests
-  # and job has metadata like name and
-  # runs-on[which is the machine to run the job on]
   Tests:
-    name: Tests
     runs-on: ubuntu-latest
 
-    # steps is an array of steps to run in the job.
-    # each step is a command to run in the job.
-    # this is called job list.
     steps:
-      # this step clones your repository to the runner.
-      - name: Check out  the code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      # This installs Node.js version 22 inside the runner.
-      - name: Set up Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: pnpm
 
-      # this is runs on root of your newly installed
-      # repo in the runner by first one
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
-      - name: Run the test
-        run: npm run test -- -- coverage
+      - name: Run tests
+        run: pnpm test
