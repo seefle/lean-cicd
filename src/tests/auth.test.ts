@@ -7,6 +7,7 @@ const person = {
 describe("person", () => {
   it("should is defined", () => {
     expect(person.isActive).toBeDefined();
+    console.log("Hello from every where");
   });
   it("is active", () => {
     expect(person.isActive).toBeTruthy();
