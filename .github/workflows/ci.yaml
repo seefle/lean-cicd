@@ -70,3 +70,33 @@ jobs:
 
       - name: Run the Formatter
         run: pnpm format:check
+
+  Linter:
+    name: Styles
+    runs-on: ubuntu-latest
+
+    # steps is an array of steps to run in the job.
+    # each step is a command to run in the job.
+    # this is called job list.
+    steps:
+      # this step clones your repository to the runner.
+      - name: Check out  the code
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      # This installs Node.js version 22 inside the runner.
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      # this is runs on root of your newly installed
+      # repo in the runner by first one
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run the linter
+        run: pnpm run lint
