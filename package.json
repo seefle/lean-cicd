@@ -1,16 +1,16 @@
 {
   "name": "learn-cicd-typescript-starter",
   "version": "1.0.0",
-  "packageManager": "npm@11.16.0",
+  "packageManager": "pnpm@10.12.1",
   "main": "dist/main.js",
   "type": "module",
   "scripts": {
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
-    "build": "npx tsc",
+    "build": "tsc",
     "start": "node dist/main.js",
-    "dev": "npx tsc && node dist/main.js",
+    "dev": "tsc && node dist/main.js",
     "test": "vitest --run",
     "format:write": "prettier --write \"src/**/*.{js,ts,json,css,md}\"",
     "format:check": "prettier --check \"src/**/*.{js,ts,json,css,md}\""
