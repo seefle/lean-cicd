@@ -1,6 +1,7 @@
 {
   "name": "learn-cicd-typescript-starter",
   "version": "1.0.0",
+  "packageManager": "npm@11.16.0",
   "main": "dist/main.js",
   "type": "module",
   "scripts": {
