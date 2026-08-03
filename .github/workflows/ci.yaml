@@ -34,3 +34,30 @@ jobs:
 
       - name: Run the test
         run: npm run test
+
+  Style:
+    name: Styles
+    runs-on: ubuntu-latest
+
+    # steps is an array of steps to run in the job.
+    # each step is a command to run in the job.
+    # this is called job list.
+  steps:
+    # this step clones your repository to the runner.
+    - name: Check out  the code
+      uses: actions/checkout@v4
+
+    # This installs Node.js version 22 inside the runner.
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+
+    # this is runs on root of your newly installed
+    # repo in the runner by first one
+    - name: Install dependencies
+      # this is stands for 'clean install'
+      run: npm ci
+
+    - name: Run the Formatter
+      run: npm run format:check
